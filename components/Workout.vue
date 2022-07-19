@@ -2,9 +2,7 @@
 const props = defineProps(['items', 'current'])
 const carousel = ref(null)
 
-watch(() => props.current, (newVal) => {
-    carousel.value.setActiveItem(newVal)
-})
+watch(() => props.current, newVal => carousel.value.setActiveItem(newVal))
 </script>
 
 <template>

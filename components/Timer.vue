@@ -63,7 +63,7 @@ const restart = () => {
 <template>
 <div class="timer">
     <div class="timer--clock">
-        {{minStr}}:{{secStr}}:{{msecStr}}
+        {{minStr}}:{{secStr}}<span class="timer--clock-ms">:{{msecStr}}</span>
     </div>
     <div class="timer--ctrls">
         <el-button @click="play">
@@ -94,6 +94,10 @@ const restart = () => {
     font-family: 'Roboto Mono', monospace;
     font-size: 14rem;
     margin: 2rem 0;
+}
+
+.timer--clock-ms {
+    font-size: 10rem;
 }
 
 .timer--ctrls button {

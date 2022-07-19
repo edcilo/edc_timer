@@ -1,35 +1,13 @@
 <script setup>
-const workout = [
-    {
-        name: 'push ups',
-        time: 300
-    },
-    {
-        name: 'rest',
-        time: 200
-    },
-    {
-        name: 'singles',
-        time: 300
-    },
-    {
-        name: 'finished',
-        time: null
-    },
-    {
-        name: '',
-        time: null
-    }
-]
-
+const workout = ref([])
 const round = ref(0)
 
 const work = computed(() => {
-    return round.value < workout.length ? workout[round.value] : ''
+    return round.value < workout.value.length ? workout.value[round.value] : ''
 })
 
 const time = computed(() => {
-    return round.value < workout.length ? workout[round.value].time : null
+    return round.value < workout.value.length ? workout.value[round.value].time : null
 })
 
 const finishHandler = () => {
@@ -38,33 +16,23 @@ const finishHandler = () => {
 </script>
 
 <template>
-    <div class="dashboard">
-        <el-button class="dashboard--menu-btn">
-            <font-awesome-icon icon="bars" />
-        </el-button>
-        <h1 class="dashboard--title">{{work.name}}</h1>
-        <Timer :time="time" @finish="finishHandler"/>
-        <div class="dashboard--carousel">
-            <Workout :items="workout" :current="round" />
-        </div>
+<div class="dashboard">
+    <h1 class="dashboard--title">{{work.name}}</h1>
+
+    <Timer :time="time" @finish="finishHandler"/>
+
+    <div class="dashboard--carousel" v-if="workout.length > 0">
+        <Workout :items="workout" :current="round" />
     </div>
+
+    <WorkoutMenu v-model="workout"/>
+</div> 
 </template>
 
 <style scoped>
 .dashboard {
     position: relative;
     text-align: center;
-}
-
-.dashboard--menu-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    box-shadow: var(--el-box-shadow-light);
-}
-
-.dashboard--menu-btn:active {
-    box-shadow: none;
 }
 
 .dashboard--title {

@@ -3,7 +3,7 @@
 import { useStore, Task } from '@/store';
 import { useEffect, useState } from 'react';
 import { IconPlayerPlayFilled } from '@tabler/icons-react';
-import { TaskCard, Timer, TimerHeader } from '@/components';
+import { Header, TaskCard, Timer, TimerHeader } from '@/components';
 import { TaskForm, Output } from '@/containers';
 import styles from './styles.module.css';
 
@@ -61,6 +61,10 @@ export function TasksContainer() {
             </div>
 
             <div className={styles.timerContainer}>
+                <div className={styles.header}>
+                    <Header />
+                </div>
+
                 {activeTask?.id && started 
                     ? <div>
                         <TimerHeader 

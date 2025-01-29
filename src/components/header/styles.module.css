@@ -1,0 +1,10 @@
+.header {
+    @apply w-full h-16 p-4;
+    @apply flex justify-between items-center;
+}
+
+.logo {}
+
+.version {
+    @apply text-sm text-stone-400;
+}

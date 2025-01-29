@@ -17,6 +17,10 @@
     @apply flex items-center justify-center;
 }
 
+.header {
+    @apply absolute top-0 w-full;
+}
+
 .startBtn {
     @apply absolute bottom-0;
     @apply w-full py-5 px-8 flex justify-center gap-2;

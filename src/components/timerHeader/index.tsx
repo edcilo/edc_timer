@@ -11,10 +11,10 @@ export function TimerHeader({ title, description, duration }: Props) {
     return (
         <div className={styles.headerContainer}>
             <h1 className={styles.title}>
-                {title}
+                {title || (<span>&nbsp;</span>)}
             </h1>
             <h2 className={styles.description}>
-                {description}
+                {description || (<span>&nbsp;</span>)}
             </h2>
             <h3 className={styles.duration}>
                 -- {formatTime(duration)} --

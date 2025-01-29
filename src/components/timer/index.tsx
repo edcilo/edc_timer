@@ -36,7 +36,7 @@ export function Timer({ duration, disabled=false, onExpire=() => undefined }: Pr
         const audio = new Audio(TIMER_SOUND);
         audio.volume = 0.3;
         setAudio(audio);
-    }, []);
+    }, [setAudio]);
 
     useEffect(() => {
         restart(addSeconds(new Date(), duration));

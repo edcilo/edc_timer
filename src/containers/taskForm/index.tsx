@@ -4,7 +4,6 @@ import { timeToSeconds } from '@/utils/time';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IconAlarmPlus } from '@tabler/icons-react';
 import styles from './styles.module.css';
-import { useRef } from 'react';
 
 type Inputs = {
     title: string;

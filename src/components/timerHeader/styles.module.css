@@ -1,0 +1,16 @@
+.headerContainer {
+    @apply text-center bg-stone-900 p-4 text-stone-500;
+}
+
+.title {
+    @apply text-4xl;
+    @apply font-bold uppercase text-stone-400 mb-0;
+}
+
+.description {
+    @apply text-2xl mb-0;
+}
+
+.duration {
+    @apply text-2xl;
+}

@@ -1,0 +1,37 @@
+.card {
+    @apply w-full p-2 border-l-4;
+    @apply rounded-sm;
+    @apply bg-stone-200;
+}
+
+.pending {
+    @apply border-l-4 border-green-100;
+}
+
+.completed {
+    @apply border-l-4 border-green-600;
+}
+
+.cardHeader {
+    @apply flex items-center justify-between;
+}
+
+.cardTitle {
+    @apply font-bold text-stone-800;
+}
+
+.cardDuration {
+    @apply text-sm text-stone-600;
+}
+
+.cardDescription {
+    @apply text-sm text-stone-600;
+}
+
+.cardFooter {
+    @apply flex justify-end;
+}
+
+.deleteBtn {
+    @apply text-red-500;
+}

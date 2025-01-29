@@ -1,0 +1,26 @@
+.timerContainer {
+    @apply flex flex-col items-center;
+    @apply p-10;
+    @apply bg-stone-900;
+}
+
+.timer {
+    @apply text-9xl font-bold text-stone-400;
+    @apply flex items-center justify-center;
+}
+
+.btnsContainer {
+    @apply my-4;
+    @apply flex gap-2 justify-center;
+}
+
+.button {
+    @apply w-12 h-12 rounded-full;
+    @apply flex items-center justify-center;
+    @apply bg-stone-500 text-stone-200;
+    @apply hover:bg-stone-600 transition-colors duration-300;
+}
+
+.button:disabled {
+    @apply opacity-50 hover:bg-stone-500;
+}

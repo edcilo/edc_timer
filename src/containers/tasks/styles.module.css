@@ -1,0 +1,44 @@
+.content {
+    @apply w-full h-screen;
+    @apply flex items-stretch;
+}
+
+.tasksList {
+    @apply w-[30%] h-full;
+    @apply flex flex-col items-stretch;
+    @apply bg-stone-600;
+    @apply overflow-y-auto;
+}
+
+.timerContainer {
+    @apply relative;
+    @apply w-[70%] h-full;
+    @apply bg-stone-900;
+    @apply flex items-center justify-center;
+}
+
+.startBtn {
+    @apply absolute bottom-0;
+    @apply w-full py-5 px-8 flex justify-center gap-2;
+    @apply text-center font-bold text-lg;
+    @apply bg-stone-500 text-stone-200;
+    @apply cursor-pointer;
+    @apply hover:bg-stone-600 transition-colors duration-300; 
+}
+
+.list {
+    @apply h-[100%] p-4;
+    @apply overflow-y-auto;
+}
+
+.list li {
+    @apply mb-4;
+}
+
+.form {}
+
+.empty {
+    @apply w-full h-full;
+    @apply flex items-center justify-center;
+    @apply text-xl text-stone-400;
+}

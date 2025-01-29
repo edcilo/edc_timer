@@ -1,0 +1,43 @@
+.form {
+    @apply p-4 bg-zinc-800;
+}
+
+.ctrls {
+    @apply mb-2;
+}
+
+.timeInputs {
+    @apply flex gap-2 items-center;
+}
+
+.timeSeparator {
+    @apply mb-2 text-stone-200;
+}
+
+.inputCtrl {
+    @apply block w-full mb-2 relative;
+}
+
+.label {
+    @apply absolute px-2 left-1;
+    @apply text-sm text-stone-900;
+    @apply -translate-y-4 scale-75 top-4 z-10 origin-[0];
+}
+
+.input {
+    @apply block w-full p-2.5 pt-5;
+    @apply bg-stone-50 border border-stone-500 rounded-lg;
+    @apply text-stone-900 text-sm;
+    @apply focus:ring-blue-500 focus:border-blue-500;
+}
+
+.input[type="number"] {
+    @apply text-right;
+}
+
+.button {
+    @apply w-full rounded-md py-2 px-8;
+    @apply flex items-center justify-center;
+    @apply bg-stone-500 text-stone-200;
+    @apply hover:bg-stone-600 transition-colors duration-300;
+}

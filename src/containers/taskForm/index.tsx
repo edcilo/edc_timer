@@ -4,6 +4,7 @@ import { timeToSeconds } from '@/utils/time';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IconAlarmPlus } from '@tabler/icons-react';
 import styles from './styles.module.css';
+import { useRef } from 'react';
 
 type Inputs = {
     title: string;
@@ -27,7 +28,8 @@ export function TaskForm({ onSubmit }: Props) {
     const {
         register,
         handleSubmit,
-        reset
+        reset,
+        setFocus
     } = useForm<Inputs>();
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
@@ -38,15 +40,16 @@ export function TaskForm({ onSubmit }: Props) {
         });
 
         reset();
+        setFocus('title');
     }
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
             <div className={styles.ctrls}>
                 <div className={styles.inputCtrl}>
-                    <input 
+                    <input
                         type="text" 
-                        className={`peer ${styles.input}`}
+                        className={styles.input}
                         placeholder=" "
                         {...register("title")}
                     />
@@ -101,7 +104,7 @@ export function TaskForm({ onSubmit }: Props) {
                         <input
                             type="number"
                             className={styles.input}
-                            step={10}
+                            step={1}
                             max={59}
                             min={0}
                             {...register("seconds")}

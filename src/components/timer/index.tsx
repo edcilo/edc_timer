@@ -1,10 +1,13 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import { addSeconds } from 'date-fns';
 import { IconPlayerPause, IconPlayerPlay, IconPlayerTrackPrev } from '@tabler/icons-react';
 import styles from './styles.module.css';
+
+const TIMER_LENGTH = 3;
+const TIMER_SOUND = '/media/timer_sound.mp3'
 
 type Props = {
     duration: number;
@@ -13,7 +16,9 @@ type Props = {
 }
 
 export function Timer({ duration, disabled=false, onExpire=() => undefined }: Props) {
+    const [audio, setAudio] = useState<HTMLAudioElement|undefined>(undefined);
     const {
+        totalSeconds,
         seconds,
         minutes,
         hours,
@@ -28,8 +33,34 @@ export function Timer({ duration, disabled=false, onExpire=() => undefined }: Pr
     });
 
     useEffect(() => {
+        const audio = new Audio(TIMER_SOUND);
+        audio.volume = 0.3;
+        setAudio(audio);
+    }, []);
+
+    useEffect(() => {
         restart(addSeconds(new Date(), duration));
     }, [duration]);
+
+    useEffect(() => {
+        if (totalSeconds === TIMER_LENGTH) {
+            audio?.play();
+        }
+    }, [totalSeconds]);
+
+    const pauseHandler = () => {
+        pause();
+        audio?.pause();
+    }
+
+    const resumeHandler = () => {
+        resume();
+
+        if (audio && totalSeconds <= TIMER_LENGTH) {
+            audio.currentTime = TIMER_LENGTH - totalSeconds;
+            audio.play();
+        }
+    }
 
     return (
         <div className={styles.timerContainer}>
@@ -42,7 +73,7 @@ export function Timer({ duration, disabled=false, onExpire=() => undefined }: Pr
                 {isRunning 
                     ? (
                         <button 
-                            onClick={pause} 
+                            onClick={pauseHandler} 
                             className={styles.button}
                             disabled={disabled}
                             aria-label="pause"
@@ -51,7 +82,7 @@ export function Timer({ duration, disabled=false, onExpire=() => undefined }: Pr
                         </button>
                     ) : (
                         <button 
-                            onClick={resume} 
+                            onClick={resumeHandler} 
                             className={styles.button}
                             disabled={disabled}
                             aria-label="play"
